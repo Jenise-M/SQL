@@ -1,0 +1,33 @@
+-- Create a Clothing Store Database --
+
+CREATE TABLE clothing (id INTEGER PRIMARY KEY, item_type TEXT, color TEXT, size TEXT, price INTEGER);
+
+INSERT INTO clothing VALUES 
+(1, "Shirts", "blue", "M", 15.00),
+(2, "Pants", "black", "L", 20.00),
+(3, "Socks", "white", "S", 10.00),
+(4, "Skirts", "black", "S", 25.00),
+(5, "Ties", "grey", "L", 15.00),
+(6, "Button-ups", "tan", "M", 15.00),
+(7, "Shorts", "black", "S", 8.00),
+(8, "Swimsuits", "blue", "L", 35.00),
+(9, "Cardigans", "pink", "L", 20.00),
+(10, "Hats", "black", "S", 10.00),
+(11, "Leggings", "black", "M", 12.00),
+(12, "Crop tops", "white", "M", 10.00),
+(13, "Jeans", "black", "S", 30.00),
+(14, "Biker shorts", "white", "L", 10.00),
+(15, "Jackets", "red", "S", 50.00);
+
+
+-- Display the database ordered by price --
+SELECT * FROM clothing
+ORDER BY price;
+
+
+-- What are the top 5 most expensive clothing items? --
+SELECT item, price FROM clothing
+ORDER BY price desc
+LIMIT 5;
+
+
