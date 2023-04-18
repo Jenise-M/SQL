@@ -1,0 +1,36 @@
+-- Create a Clothing Store Database --
+
+CREATE TABLE store (id INTEGER PRIMARY KEY, item_type TEXT, color TEXT, size TEXT, price INTEGER);
+
+INSERT INTO store VALUES (1, "Shirts", "blue", "M", 15.00);
+INSERT INTO store VALUES (2, "Pants", "black", "L", 20.00);
+INSERT INTO store VALUES (3, "Socks", "white", "S", 10.00);
+INSERT INTO store VALUES (4, "Skirts", "black", "S", 25.00);
+INSERT INTO store VALUES (5, "Ties", "grey", "L", 15.00);
+INSERT INTO store VALUES (6, "Button-ups", "tan", "M", 15.00);
+INSERT INTO store VALUES (7, "Shorts", "black", "S", 8.00);
+INSERT INTO store VALUES (8, "Swimsuits", "blue", "L", 35.00);
+INSERT INTO store VALUES (9, "Cardigans", "pink", "L", 20.00);
+INSERT INTO store VALUES (10, "Hats", "black", "S", 10.00);
+INSERT INTO store VALUES (11, "Leggings", "black", "M", 12.00);
+INSERT INTO store VALUES (12, "Crop tops", "white", "M", 10.00);
+INSERT INTO store VALUES (13, "Jeans", "black", "S", 30.00);
+INSERT INTO store VALUES (14, "Biker shorts", "white", "L", 10.00);
+INSERT INTO store VALUES (15, "Jackets", "red", "S", 50.00);
+
+
+-- Display the database ordered by price 
+SELECT * FROM store
+ORDER BY price;
+
+-- What is the averge price of items in size large? 
+SELECT AVG(price) "avg size L price"
+FROM store
+WHERE size = 'L';
+
+-- What are the top 5 most expensive clothing items? 
+SELECT item, price FROM store
+ORDER BY price desc
+LIMIT 5;
+
+
