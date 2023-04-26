@@ -1,0 +1,39 @@
+# In this SQL, I'm quering a database that is holding data about Marvel characters to answer questions about the data. 
+
+#1 What is the average strenth of the marvel characters who's alignment is "good"?
+SELECT alignment, AVG(strength) AS avg_strength 
+FROM marvels 
+WHERE alignment='Good';
+
+#2 What is the average strength of the marvel characters who's alignment is "bad"?
+SELECT alignment, AVG(strength) AS avg_strength 
+FROM marvels 
+WHERE alignment='Bad';
+
+#3 What is the maximum speed of the marvel characters who live in the USA?
+SELECT hometown, MAX(speed) AS max_speed 
+FROM marvels 
+WHERE hometown='USA';
+
+#4 What is the minimum weight of the marvel characters who are male? 
+SELECT gender, MIN(weight_kg) AS min_weight 
+FROM marvels 
+WHERE gender='Male';
+
+#5 What are the names of the marvel characters who's speed is greater than 5?
+SELECT name, speed FROM marvels
+GROUP BY name
+HAVING speed >= 5;
+
+#6 List the fighting skill levels of the marvel characters, with >= 5 being 'advanced, >= 3 being intermediate, and less than 3 being beginner. 
+SELECT name, fighting_skills,
+    CASE
+        WHEN fighting_skills >= 5 THEN 'advanced'
+        WHEN fighting_skills >= 3 THEN 'intermediate'
+        ELSE 'beginner'
+    END AS skill_level FROM marvels;
+    
+#6 Which marvel characters have intelligence greater than 4 and durability greater than 5?
+SELECT name, intelligence, durability 
+FROM marvels
+WHERE intelligence > 4 AND durability >5;
