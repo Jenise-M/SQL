@@ -1,0 +1,102 @@
+# In this project, I create two tables with data from famous actors such as name, age, and movies. I use the JOIN function to analyze and relate the data from both tables.
+
+CREATE TABLE actors
+    (id INTEGER PRIMARY KEY AUTOINCREMENT,
+    full_name TEXT,
+    age INTEGER
+    );
+    
+INSERT INTO actors VALUES (1, 'Hugh Jackman', 54);
+INSERT INTO actors VALUES (2, 'Vin Diesel', 55);
+INSERT INTO actors VALUES (3, 'Nicholas Cage', 59);
+INSERT INTO actors VALUES (4, 'Sylvester Stallone', 76);
+INSERT INTO actors VALUES (5, 'Adam Sandler', 56);
+INSERT INTO actors VALUES (6, 'Chris Evans', 41);
+INSERT INTO actors VALUES (7, 'Johnny Depp', 59);
+INSERT INTO actors VALUES (8, 'Will Smith', 54);
+INSERT INTO actors VALUES (9, 'Tom Hanks', 66);
+INSERT INTO actors VALUES (10, 'Angelina Jolie', 47);
+INSERT INTO actors VALUES (11, 'Jennifer Aniston', 54);
+INSERT INTO actors VALUES (12, 'Leonardo Dicaprio', 48);
+INSERT INTO actors VALUES (13, 'Scarlett Johansson', 38);
+INSERT INTO actors VALUES (14, 'Ryan Reynolds', 46);
+INSERT INTO actors VALUES (15, 'Brad Pitt', 59);
+
+CREATE TABLE movies
+    (id INTEGER PRIMARY KEY,
+    person_id INTEGER,
+    name TEXT
+    );
+    
+INSERT INTO movies VALUES (1, 1, 'X-Men');
+INSERT INTO movies VALUES (2, 2, 'Fast & Furious');
+INSERT INTO movies VALUES (3, 3, 'National Treasure');
+INSERT INTO movies VALUES (4, 4, 'Rocky');
+INSERT INTO movies VALUES (5, 5, 'The Waterboy');
+INSERT INTO movies VALUES (6, 6, 'Captian America');
+INSERT INTO movies VALUES (7, 7, 'Pirates of the Caribbean');
+INSERT INTO movies VALUES (8, 8, 'Bad Boys');
+INSERT INTO movies VALUES (9, 9, 'Forrest Gump');
+INSERT INTO movies VALUES (10, 10, 'Maleficent');
+INSERT INTO movies VALUES (11, 11, 'Just Go With It');
+INSERT INTO movies VALUES (12, 5, 'Just Go With It');
+INSERT INTO movies VALUES (13, 12, 'Titanic');
+INSERT INTO movies VALUES (14, 13, 'Black Widow');
+INSERT INTO movies VALUES (15, 14, 'Just Friends');
+INSERT INTO movies VALUES (16, 15, 'Mr. & Mrs. Smith');
+INSERT INTO movies VALUES (17, 10, 'Mr. & Mrs. Smith');
+
+-- Join the tables to show the actors next to the movies they appear in.
+SELECT actors.full_name, movies.name AS movie 
+FROM actors
+    JOIN movies
+    ON actors.id=movies.person_id;
+    
+-- Join the tables to show the actors in alphabetical order, their age, and the movies they appear in. 
+SELECT actors.full_name, actors.age, movies.name
+FROM actors
+    JOIN movies
+    ON actors.id=movies.person_id
+ORDER BY actors.full_name;
+
+-- How many movies does each actor appear in?
+SELECT actors.full_name, COUNT(movies.name) AS movie 
+FROM actors
+    JOIN movies
+    ON actors.id=movies.person_id
+    GROUP BY actors.full_name;
+
+-- What movies does Chris Evans appear in?
+SELECT actors.full_name, movies.name AS movie 
+FROM actors
+    JOIN movies
+    ON actors.id=movies.person_id
+    WHERE actors.full_name='Chris Evans';
+
+-- What movies does Tom Hanks appear in?
+SELECT actors.full_name, movies.name AS movie 
+FROM actors
+    JOIN movies
+    ON actors.id=movies.person_id
+    WHERE actors.full_name='Tom Hanks';
+   
+-- What movies does Adam Sandler appear in?
+SELECT actors.full_name, movies.name AS movie 
+FROM actors
+    JOIN movies
+    ON actors.id=movies.person_id
+    WHERE actors.full_name='Adam Sandler';
+
+-- What movies does Jennifer Aniston appear in?
+SELECT actors.full_name, movies.name AS movie 
+FROM actors
+    JOIN movies
+    ON actors.id=movies.person_id
+    WHERE actors.full_name='Jennifer Aniston';
+ 
+-- What movies does Angelina Jolie appear in?
+SELECT actors.full_name, movies.name AS movie 
+FROM actors
+    JOIN movies
+    ON actors.id=movies.person_id
+    WHERE actors.full_name='Angelina Jolie';
